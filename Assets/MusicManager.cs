@@ -1,39 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class MusicManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource [] _music = new AudioSource[1];
+    [SerializeField] private Audio AudioSett;
+    [SerializeField] private AudioMixer newSettAudio;
+    //public Audio AudioSett;
+    //public AudioMixer newSettAudio; 
     // Start is called before the first frame update
-    void Start()
+
+    public void Setmaster(float f)
     {
-        
+        AudioSett._master = f;
+        newSettAudio.SetFloat("Master", Mathf.Log10(f) * 20f);
     }
-    void OnEnable()
+    public void SetSFX(float f)
     {
-        //PlayerController.OnRoomEnter += Room1;
-        //PlayerController.OnRoomEnter += Room2;
-        //PlayerController.OnRoomEnter += Room3;
-        //PlayerController.OnRoomEnter += Room4;
+        AudioSett._SFX = f;
+        newSettAudio.SetFloat("SFX", Mathf.Log10(f) * 20f);
     }
-    public void Room1()
+    public void SetMusic(float f)
     {
-       // _music[0].Play();
+        AudioSett._music = f;
+        newSettAudio.SetFloat("Music", Mathf.Log10(f) * 20f);
     }
-    public void Room2()
-    {
-        //_music[2].Play();
-    }
-    public void Room3()
-    {
-        //_music[3].Play();
-    }
-    public void Room4()
-    {
-        //_music[4].Play();
-    }
-    // Update is called once per frame
     void Update()
     {
         
