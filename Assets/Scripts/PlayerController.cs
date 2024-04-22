@@ -10,18 +10,8 @@ public class PlayerController : MonoBehaviour
     private float _vertical;
     [SerializeField] private Rigidbody myRBD;
     [SerializeField] private float velocityModifier = 5f;
-    //[SerializeField] private float upModifier = 8f;
-
-    public static event Action OnRoomEnter;
-    //[SerializeField] private AudioClip walking;
     [SerializeField] private AudioSource walkingEffect;
 
-
-
-    void Start()
-    {
-        
-    }
     public void OnMovement(InputAction.CallbackContext move)
     {
         _horizontal = move.ReadValue<Vector2>().x;
@@ -56,18 +46,6 @@ public class PlayerController : MonoBehaviour
     {
         walkingEffect.Play();
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Room")
-        {
-            OnRoomEnter?.Invoke();
-        }
-        
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        
-    }
-
+    
 
 }

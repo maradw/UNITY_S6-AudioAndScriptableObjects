@@ -7,10 +7,6 @@ public class MusicManager : MonoBehaviour
 {
     [SerializeField] private Audio AudioSett;
     [SerializeField] private AudioMixer newSettAudio;
-    //public Audio AudioSett;
-    //public AudioMixer newSettAudio; 
-    // Start is called before the first frame update
-
     public void Setmaster(float f)
     {
         AudioSett._master = f;
@@ -26,8 +22,5 @@ public class MusicManager : MonoBehaviour
         AudioSett._music = f;
         newSettAudio.SetFloat("Music", Mathf.Log10(f) * 20f);
     }
-    void Update()
-    {
-        
-    }
+
 }
