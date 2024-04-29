@@ -16,8 +16,11 @@ public class PlayerController : MonoBehaviour
     {
         _horizontal = move.ReadValue<Vector2>().x;
         _vertical = move.ReadValue<Vector2>().y;
+  
+    }
+    public void Interact(InputAction.CallbackContext interact)
+    {
 
-        
     }
     public void FixedUpdate()
     {
@@ -28,18 +31,22 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             Walk();
+            
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             Walk();
+           
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
+           
             Walk();
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
             Walk();
+           
         }
     }
     private void Walk()

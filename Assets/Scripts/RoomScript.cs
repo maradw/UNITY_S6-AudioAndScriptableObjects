@@ -1,31 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class RoomScript : MonoBehaviour
 {
-    [SerializeField] private AudioSource _music;
+    private AudioSource source;
     [SerializeField] private AudioSource _BackgroundMusic;
     [SerializeField] private AudioSource _Doors;
+    public RoomSO _roomAudio;
+    public static event Action OnCollisionEnter;
+    public static event Action OnCollisionExit;
+
     void Awake()
     {
+        source=GetComponent<AudioSource>();
         _BackgroundMusic.Play();
     }
+    private void Start()
+    {
+         source.clip = _roomAudio._music;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        _Doors.Play();
+        MusicManager.Instance.PlayDoors();
+
         if (other.tag == "Player")
         {
-            _music.Play();
+            source.Play();
             _BackgroundMusic.mute = true;
-        }
-        
+            OnCollisionEnter?.Invoke();
+        } 
     }
     private void OnTriggerExit(Collider other)
     {
-        _Doors.Play();
-        _music.Stop();
+        MusicManager.Instance.PlayDoors();
+        
+        source.Stop();
         _BackgroundMusic.mute = false;
+        OnCollisionExit?.Invoke();
         
     }
 
