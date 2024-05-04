@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 1111
+  m_Name: capsule
   m_Shader: {fileID: -6465566751694194690, guid: 467fdeb9cfe5cf94daa8a80ed9847206, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
